@@ -204,4 +204,4 @@ async def stream_start(client, message):
     #     "👉 Please forward this message to your <b>Saved Messages</b> or any <b>private chat</b>.",
     #     parse_mode=enums.ParseMode.HTML
     # )
-    # await warn_msg.delete(delay=600)  # auto delete after 600 sec (10 mins)
+     await warn_msg.delete(delay=600)   auto delete after 600 sec (10 mins)
