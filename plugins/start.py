@@ -196,7 +196,9 @@ async def stream_start(client, message):
         disable_web_page_preview=True,
         reply_markup=rm
     )
-
+    # auto delete after 600 seconds (10 mins)
+    await asyncio.sleep(120)
+    await msg.delete()
     # # Optional: auto-delete warning like your screenshot
     # warn_msg = await message.reply_text(
     #     "❗❗❗ <b>IMPORTANT</b> ❗❗❗\n\n"
@@ -204,4 +206,4 @@ async def stream_start(client, message):
     #     "👉 Please forward this message to your <b>Saved Messages</b> or any <b>private chat</b>.",
     #     parse_mode=enums.ParseMode.HTML
     # )
-     await warn_msg.delete(delay=600)   auto delete after 600 sec (10 mins)
+     # await warn_msg.delete(delay=600)   auto delete after 600 sec (10 mins)
