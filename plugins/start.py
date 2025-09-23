@@ -196,11 +196,7 @@ async def stream_start(client, message):
         disable_web_page_preview=True,
         reply_markup=rm
     )
-    # wait for 600 sec (10 mins) OR change to 60 for 1 min
-    await asyncio.sleep(600)
-
-    # delete the reply message
-    await msg.delete()
+    await warn_msg.delete(delay=60)
     # # Optional: auto-delete warning like your screenshot
     # warn_msg = await message.reply_text(
     #     "❗❗❗ <b>IMPORTANT</b> ❗❗❗\n\n"
