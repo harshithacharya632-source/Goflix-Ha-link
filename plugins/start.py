@@ -116,7 +116,6 @@ async def start(client, message):
      rm = InlineKeyboardMarkup(
          [[
              InlineKeyboardButton("✨ Update Channel", url="https://t.me/trendi_Backup")
-         [   InlineKeyboardButton("✨ Movies Bot", url="https://t.me/Goflix2_Bot")
          ]]
      )
      await client.send_message(
