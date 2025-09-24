@@ -1,5 +1,6 @@
 import random
 import humanize
+import asyncio
 from Script import script
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ForceReply, CallbackQuery
@@ -91,7 +92,7 @@ async def stream_start(client, message):
 <b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n\n
 <b>🚸 Nᴏᴛᴇ : ᴛʜɪs ᴍᴇssᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ɪɴ 120 second</b>"""
 
-    # Send the main message with links and auto-delete after 10 minutes
+    # Send the main message with links
     main_msg = await message.reply_text(
         text=msg_text.format(
             get_name(log_msg),                       # filename
@@ -102,5 +103,14 @@ async def stream_start(client, message):
         reply_markup=rm
     )
     
-    # Auto-delete the main message after 10 minutes (600 seconds)
-    await main_msg.delete(delay=120)
+    # Auto-delete function
+    async def auto_delete():
+        await asyncio.sleep(120)  # 10 minutes = 600 seconds
+        try:
+            await main_msg.delete()
+            print(f"Message deleted successfully for user {user_id}")
+        except Exception as e:
+            print(f"Error deleting message: {e}")
+    
+    # Run the auto-delete in background
+    asyncio.create_task(auto_delete())
