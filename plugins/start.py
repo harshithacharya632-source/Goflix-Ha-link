@@ -19,7 +19,7 @@ from utils import temp, get_shortlink
     #    await client.send_message(
      #       LOG_CHANNEL,
        #     script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention)
-        )
+ #       )
  #   rm = InlineKeyboardMarkup(
  #       [[
    #         InlineKeyboardButton("✨ Update Channel", url="https://t.me/trendi_Backup")
